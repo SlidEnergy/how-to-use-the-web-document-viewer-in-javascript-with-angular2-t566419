@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DevExpress.XtraReports.Web.Extensions;
+using DevExpress.XtraReports.Web.WebDocumentViewer;
 
 namespace ServerSide {
     public class MvcApplication : System.Web.HttpApplication {
@@ -13,7 +14,8 @@ namespace ServerSide {
             //AreaRegistration.RegisterAllAreas();
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            ReportStorageWebExtension.RegisterExtensionGlobal(new MyReportStorage());
-        }
+
+			DefaultWebDocumentViewerContainer.Register<IWebDocumentViewerReportResolver, CustomWebDocumentViewerReportResolver>();
+		}
     }
 }
